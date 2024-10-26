@@ -54,8 +54,8 @@ public class TankProtocol001 extends Main001 {
         telemetry.addData("rpf", right_front_power);
 
         //Set the velocities of each wheel motor
-        left_front.setVelocity(left_front_power * MAX_NUM_TICKS_MOVEMENT * MOVEMENT_RPM);
-        left_back.setVelocity(left_back_power * MAX_NUM_TICKS_MOVEMENT * MOVEMENT_RPM);
+        left_front.setVelocity(-1 * left_front_power * MAX_NUM_TICKS_MOVEMENT * MOVEMENT_RPM);
+        left_back.setVelocity(-1 * left_back_power * MAX_NUM_TICKS_MOVEMENT * MOVEMENT_RPM);
         right_front.setVelocity(right_front_power * MAX_NUM_TICKS_MOVEMENT * MOVEMENT_RPM);
         right_back.setVelocity(right_back_power * MAX_NUM_TICKS_MOVEMENT * MOVEMENT_RPM);
     }

@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 
 public class Algorithms001 {
     //Really Slow 0.05f, Regular 0.1f
-    float controlMultiplier = 0.2f;
+    float controlMultiplier = 0.1f;
 
     // NEED TO CHECK THIS VALUE AND MAKE IT CORRECT
     final float goBildaWheel = 289.03f;
@@ -19,7 +19,6 @@ public class Algorithms001 {
 
         double movePower = 0;
 
-
         //FORCE MATRIX i == 1 is left_front i == 2 is right_front i == 3 is left_back i == 4 is right_back
         //Uses unit circle math look it up if you need to
         //theta is just divided by pi so 2 is equal in angle to 2 pi
@@ -30,10 +29,10 @@ public class Algorithms001 {
 
         double rZ = Math.abs(x2);
 
-        //something up with rotation, what likely will need to do is control each wheel seperately
+        //something up with rotation, what likely will need to do is control each wheel separately
         double rotationPower = 0;
         if(x2 != 0) {
-            if(i == 1 || i == 3) {
+            if(i == 1 || i == 2) {
                 if(x2 < 0) {
                     rotationPower = -1;
                 } else if(x2 > 0) {
@@ -41,7 +40,7 @@ public class Algorithms001 {
                 } else {
                     rotationPower = 0;
                 }
-            } else if (i == 2 || i == 4) {
+            } else if (i == 3 || i == 4) {
                 if(x2 < 0) {
                     rotationPower = 1;
                 } else if(x2 > 0) {
