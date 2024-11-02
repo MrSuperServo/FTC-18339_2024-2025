@@ -3,7 +3,8 @@ package org.firstinspires.ftc.teamcode;
 
 public class Algorithms001 {
     //Really Slow 0.05f, Regular 0.1f
-    float controlMultiplier = 0.1f;
+    float wheelControlMultiplier = 0.1f;
+    float viperControlMultiplier = 0.1f;
 
     // NEED TO CHECK THIS VALUE AND MAKE IT CORRECT
     final float goBildaWheel = 289.03f;
@@ -29,7 +30,7 @@ public class Algorithms001 {
 
         double rZ = Math.abs(x2);
 
-        //something up with rotation, what likely will need to do is control each wheel separately
+        // something up with rotation, what we will likely need to do is control each wheel separately
         double rotationPower = 0;
         if(x2 != 0) {
             if(i == 1 || i == 2) {
@@ -64,8 +65,24 @@ public class Algorithms001 {
 
         //power *= 0.5f;
 
-        return power * controlMultiplier;
+        return power * wheelControlMultiplier;
     }
+
+    public double GetViperForce(double y) {
+        if ((y > 0) || (y < 0)) {
+            return y * viperControlMultiplier;
+        } else {
+            return 0;
+        }
+    }
+    public double GetViperRotation(double y) {
+        if ((y > 0) || (y < 0)) {
+            return y * viperControlMultiplier;
+        } else {
+            return 0;
+        }
+    }
+
 
     public void Initialize() {
         wheelCircumferenceMm = goBildaWheel;
