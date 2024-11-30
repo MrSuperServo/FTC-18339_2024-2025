@@ -10,6 +10,7 @@ public class Algorithms002 {
     final float goBildaWheel = 289.03f;
 
     public static float wheelCircumferenceMm = 289.03f;
+    public static final float mmPerInch = 25.4f;
 
     //Manipulate values in here in force matrix
     public double GetWheelForceTank(double y, int i, float x2)
