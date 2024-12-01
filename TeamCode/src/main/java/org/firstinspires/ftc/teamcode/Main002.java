@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class Main002 extends LinearOpMode {
@@ -36,6 +37,15 @@ public class Main002 extends LinearOpMode {
 
         viper_base = hardwareMap.get(DcMotorEx.class, "viper_base");
         viper_rot = hardwareMap.get(DcMotorEx.class, "viper_rot");
+
+        SetAutonomousDirection();
+        right_back.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        right_front.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        left_back.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        left_front.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        
+        viper_base.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        viper_rot.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void initManualModes() {
@@ -49,6 +59,24 @@ public class Main002 extends LinearOpMode {
         viper_rot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
+    public void initAutonomousModes() {
+        resetMotorsAutonomous();
+        right_back.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        right_front.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        left_back.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        left_front.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        
+        viper_base.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        viper_rot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+    public void SetAutonomousDirection() {
+        right_back.setDirection(DcMotorSimple.Direction.FORWARD);
+        right_front.setDirection(DcMotorSimple.Direction.REVERSE);
+        left_back.setDirection(DcMotorSimple.Direction.FORWARD);
+        left_front.setDirection(DcMotorSimple.Direction.REVERSE);
+    }
+
     public void resetMotorsAutonomous() {
         right_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         right_front.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -59,6 +87,16 @@ public class Main002 extends LinearOpMode {
         viper_rot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
+    public void resetMotorsAutonomous() {
+        right_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        right_front.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        left_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        left_front.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        viper_base.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        viper_rot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    }
+    
     public void StopMotors() {
         right_back.setVelocity(0);
         left_back.setVelocity(0);
@@ -67,6 +105,20 @@ public class Main002 extends LinearOpMode {
 
         viper_base.setVelocity(0);
         viper_rot.setVelocity(0);
+    }
+    
+    public void RunToPositionAutonomousMovement() {
+        right_back.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        right_front.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        left_back.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        left_front.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+
+    public void RunToPositionAutonomousMovementROT() {
+        right_back.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        right_front.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        left_back.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        left_front.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
     public boolean NoNullHardware() { return (left_back != null && left_front != null && right_back != null && right_front != null && viper_base != null && viper_rot != null); }
